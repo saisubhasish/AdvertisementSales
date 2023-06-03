@@ -6,11 +6,10 @@ from advertisement.exception import AdvertisementException
 FILE_NAME = 'Advertising_data.csv'
 TRAIN_FILE_NAME = 'train.csv'
 TEST_FILE_NAME = 'test.csv'
-KNN_IMPUTER_OBJECT_FILE_NAME = "knn_imputer.pkl"
-TARGET_ENCODER_OBJECT_FILE_NAME = "target_encoder.pkl"
+TRANSFORMER_OBJECT_FILE_NAME = "transformer.pkl"
 MODEL_FILE_NAME = "model.pkl"
 
-DATA_FILE_PATH="D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\Advertising_data.csv"
+DATA_FILE_PATH="D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\advertising.csv"
 
 
 class TrainingPipelineConfig:
@@ -53,7 +52,7 @@ class DataValidationConfig:
             self.train_file_path = os.path.join(self.data_validation_dir,"dataset",TRAIN_FILE_NAME)
             self.test_file_path = os.path.join(self.data_validation_dir,"dataset",TEST_FILE_NAME)
             self.missing_threshold:float = 0.2
-            self.base_file_path = os.path.join("Advertising_data.csv")
+            self.base_file_path = os.path.join("advertising.csv")
 
         except Exception as e:
             raise AdvertisementException(e, sys)
@@ -62,10 +61,9 @@ class DataTransformationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
         try:
             self.data_transformation_dir = os.path.join(training_pipeline_config.artifact_dir , "data_transformation")
-            self.knn_imputer_object_path = os.path.join(self.data_transformation_dir,"imputer",KNN_IMPUTER_OBJECT_FILE_NAME)
+            self.transformer_object_path = os.path.join(self.data_transformation_dir,"transformer",TRANSFORMER_OBJECT_FILE_NAME)
             self.transformed_train_path =  os.path.join(self.data_transformation_dir,"transformed",TRAIN_FILE_NAME.replace("csv","npz"))
             self.transformed_test_path =os.path.join(self.data_transformation_dir,"transformed",TEST_FILE_NAME.replace("csv","npz"))
-            self.target_encoder_path = os.path.join(self.data_transformation_dir,"target_encoder",TARGET_ENCODER_OBJECT_FILE_NAME)
 
         except Exception as e:
             raise AdvertisementException(e, sys)

@@ -3,7 +3,7 @@ import pymongo
 import pandas as pd
 from advertisement.config import mongo_client
 
-DATA_FILE_PATH="D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\Advertising_data.csv"
+DATA_FILE_PATH="D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\advertising.csv"
 DATABASE_NAME="advertisementSales"
 COLLECTION_NAME="advertisement"
 
