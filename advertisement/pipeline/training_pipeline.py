@@ -1,20 +1,20 @@
 import os, sys
 
-from thyroid.logger import logging
-from thyroid.exception import ThyroidException
-from thyroid.utils import get_collection_as_dataframe
+from advertisement.logger import logging
+from advertisement.exception import ThyroidException
+from advertisement.utils import get_collection_as_dataframe
 
-from thyroid.entity import config_entity, artifact_entity
-from thyroid.entity.config_entity import DataIngestionConfig
-from thyroid.entity.config_entity import DataValidationConfig
-from thyroid.entity.config_entity import DataTransformationConfig
+from advertisement.entity import config_entity, artifact_entity
+from advertisement.entity.config_entity import DataIngestionConfig
+from advertisement.entity.config_entity import DataValidationConfig
+from advertisement.entity.config_entity import DataTransformationConfig
 
-from thyroid.components.data_ingestion import DataIngestion
-from thyroid.components.data_validation import DataValidation
-from thyroid.components.model_pusher import ModelPusher
-from thyroid.components.data_transformation import DataTransformation
-from thyroid.components.model_trainer import ModelTrainer
-from thyroid.components.model_evaluation import ModelEvaluation
+from advertisement.components.data_ingestion import DataIngestion
+from advertisement.components.data_validation import DataValidation
+from advertisement.components.model_pusher import ModelPusher
+from advertisement.components.data_transformation import DataTransformation
+from advertisement.components.model_trainer import ModelTrainer
+from advertisement.components.model_evaluation import ModelEvaluation
 
 
 
