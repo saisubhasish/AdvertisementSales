@@ -31,20 +31,17 @@ class ModelPusher:
             # Model pusher dir
             logging.info("Saving model into model pusher directory")
             save_object(file_path= self.model_pusher_config.pusher_model_path, obj=model)
-            save_object(file_path=self.model_pusher_config.knn_imputer_object_path, obj=knn_imputer)
-            save_object(file_path=self.model_pusher_config.pusher_target_encoder_path, obj=target_encoder)
+            save_object(file_path=self.model_pusher_config.pusher_transformer_path, obj=transformer)
 
             # Getting or fetching the directory location to save latest model in different directory in each run
             logging.info("Saving model in saved model dir")
             model_path = self.model_resolver.get_latest_save_model_path()
-            knn_imputer_path = self.model_resolver.get_latest_save_knn_imputer_path()
-            target_encoder_path = self.model_resolver.get_latest_save_target_encoder_path()
+            transformer_path = self.model_resolver.get_latest_save_transformer_path()
 
             # Saved model dir outside artifact to use in prediction pipeline
             logging.info('Saving model outside of artifact directory')
             save_object(file_path=model_path, obj=model)
-            save_object(file_path=knn_imputer_path, obj=knn_imputer)
-            save_object(file_path=target_encoder_path, obj=target_encoder)
+            save_object(file_path=transformer_path, obj=transformer)
 
             model_pusher_artifact = ModelPusherArtifact(pusher_model_dir=self.model_pusher_config.pusher_model_dir, 
                                                         saved_model_dir=self.model_pusher_config.saved_model_dir)
