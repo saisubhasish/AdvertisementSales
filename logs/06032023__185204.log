@@ -1,0 +1,2 @@
+[ 2023-06-03 18:52:08,449 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-06-03 18:52:08,449 ] 30 root - INFO - Exporting collection data as pandas dataframe

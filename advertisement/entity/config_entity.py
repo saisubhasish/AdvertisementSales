@@ -1,14 +1,16 @@
 import os, sys
 from datetime import datetime
-from thyroid.logger import logging
-from thyroid.exception import ThyroidException
+from advertisement.logger import logging
+from advertisement.exception import AdvertisementException
 
-FILE_NAME = 'thyroid.csv'
+FILE_NAME = 'Advertising_data.csv'
 TRAIN_FILE_NAME = 'train.csv'
 TEST_FILE_NAME = 'test.csv'
 KNN_IMPUTER_OBJECT_FILE_NAME = "knn_imputer.pkl"
 TARGET_ENCODER_OBJECT_FILE_NAME = "target_encoder.pkl"
 MODEL_FILE_NAME = "model.pkl"
+
+DATA_FILE_PATH="D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\Advertising_data.csv"
 
 
 class TrainingPipelineConfig:
@@ -17,13 +19,13 @@ class TrainingPipelineConfig:
             self.artifact_dir = os.path.join(os.getcwd(),"artifact",f"{datetime.now().strftime('%m%d%Y__%H%M%S')}")
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
 class DataIngestionConfig:
     def __init__(self, training_pipeline_config:TrainingPipelineConfig):
         try:
-            self.database_name="HealthCare"
-            self.collection_name="Thyroid"
+            self.database_name="advertisingSales"
+            self.collection_name="advertising"
             self.data_ingestion_dir = os.path.join(training_pipeline_config.artifact_dir , "data_ingestion")
             self.feature_store_file_path = os.path.join(self.data_ingestion_dir,"feature_store",FILE_NAME)
             self.train_file_path = os.path.join(self.data_ingestion_dir,"dataset",TRAIN_FILE_NAME)
@@ -31,7 +33,7 @@ class DataIngestionConfig:
             self.test_size = 0.2
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def to_dict(self,)->dict:
         """
@@ -41,7 +43,7 @@ class DataIngestionConfig:
             return self.__dict__
 
         except Exception  as e:
-            raise ThyroidException(e,sys) 
+            raise AdvertisementException(e,sys) 
 
 class DataValidationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
@@ -54,7 +56,7 @@ class DataValidationConfig:
             self.base_file_path = os.path.join("hypothyroid.csv")
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
 class DataTransformationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
@@ -66,7 +68,7 @@ class DataTransformationConfig:
             self.target_encoder_path = os.path.join(self.data_transformation_dir,"target_encoder",TARGET_ENCODER_OBJECT_FILE_NAME)
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
 class ModelTrainerConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
@@ -77,7 +79,7 @@ class ModelTrainerConfig:
             self.overfitting_threshold = 0.1
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
 class ModelEvaluationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
@@ -96,4 +98,4 @@ class ModelPusherConfig:
             self.knn_imputer_object_path = os.path.join(self.pusher_model_dir,KNN_IMPUTER_OBJECT_FILE_NAME)
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)

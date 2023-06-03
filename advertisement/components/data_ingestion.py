@@ -1,15 +1,14 @@
 import os,sys
-import pandas as pd 
+from dask import dataframe as dd
 import numpy as np
 
 from advertisement import utils
 from advertisement.logger import logging
-from advertisement.exception import ThyroidException
+from advertisement.exception import AdvertisementException
 from advertisement.entity import config_entity, artifact_entity
 
 from sklearn.model_selection import train_test_split
-
-
+from advertisement.entity.config_entity import DATA_FILE_PATH
 
 class DataIngestion:
     def __init__(self, data_ingestion_config:config_entity.DataIngestionConfig):
@@ -20,9 +19,9 @@ class DataIngestion:
             logging.info(f"{'>>'*20} Data Ingestion {'<<'*20}")
             self.data_ingestion_config = data_ingestion_config
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
-    def initiate_data_ingestion(self)->artifact_entity.DataIngestionArtifact:
+    def initiate_data_ingestion(self, DATA_FILE_PATH)->artifact_entity.DataIngestionArtifact:
         """
         This function takes Input: Database name and collection name
         and returns output: feature store file, train file and test file
@@ -30,14 +29,8 @@ class DataIngestion:
         try:
             logging.info(f"Exporting collection data as pandas dataframe")
             # Exporting collection data as pandas dataframe
-            df:pd.DataFrame  = utils.get_collection_as_dataframe(
-                database_name=self.data_ingestion_config.database_name, 
-                collection_name=self.data_ingestion_config.collection_name)
-
-            logging.info("Replacing '?' value to np.NAN")
-
-            # Replace na with Nan
-            df.replace(to_replace="?",value=np.NAN,inplace=True)
+            df:dd.DataFrame  = dd.read_csv(DATA_FILE_PATH, dtype={'Age': 'float64',
+       'EstimatedSalary': 'float64'}).head(n=200)  # Act like pandas dataframe
 
             logging.info("Save data in feature store")
             # Save data in feature store
@@ -76,4 +69,4 @@ class DataIngestion:
 
 
         except Exception as e:
-            raise ThyroidException(error_message=e, error_detail=sys)
+            raise AdvertisementException(error_message=e, error_detail=sys)

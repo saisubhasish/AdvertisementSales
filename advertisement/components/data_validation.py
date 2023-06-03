@@ -1,12 +1,12 @@
 import os,sys 
 import numpy as np
 import pandas as pd
-from thyroid import utils
+from advertisement import utils
 from typing import Optional
-from thyroid.logger import logging
-from thyroid.config import TARGET_COLUMN
-from thyroid.exception import ThyroidException
-from thyroid.entity import artifact_entity,config_entity
+from advertisement.logger import logging
+from advertisement.config import TARGET_COLUMN
+from advertisement.exception import AdvertisementException
+from advertisement.entity import artifact_entity,config_entity
 
 
 
@@ -22,7 +22,7 @@ class DataValidation:
             self.data_ingestion_artifact=data_ingestion_artifact
             self.validation_error=dict()
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     
 
@@ -51,7 +51,7 @@ class DataValidation:
                 return None
             return df
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def drop_unnecessary_columns(self, df:pd.DataFrame, report_key_name:str)->Optional[pd.DataFrame]:
         """
@@ -70,7 +70,7 @@ class DataValidation:
             return df
             
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def is_required_columns_exists(self,base_df:pd.DataFrame,current_df:pd.DataFrame,report_key_name:str)->bool:
         """
@@ -94,7 +94,7 @@ class DataValidation:
             return True
             
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def data_drift(self,base_df:pd.DataFrame,current_df:pd.DataFrame,report_key_name:str):
         try:
@@ -123,7 +123,7 @@ class DataValidation:
             self.validation_error[report_key_name]=drift_report
             
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def initiate_data_validation(self)->artifact_entity.DataValidationArtifact:
         try:
@@ -185,4 +185,4 @@ class DataValidation:
             return data_validation_artifact
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)

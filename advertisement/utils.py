@@ -8,7 +8,7 @@ from advertisement.config import mongo_client
 from advertisement.exception import AdvertisementException
 
 
-def get_collection_as_dataframe(database_name:str,collection_name:str)->pd.DataFrame:
+def get_collection_as_dataframe(database_name:str,collection_name:str)->dd.DataFrame:
     """
     Description: This function return collection as dataframe
     =========================================================
@@ -43,7 +43,7 @@ def write_yaml_file(file_path,data:dict):
     except Exception as e:
         raise AdvertisementException(e, sys)
 
-def convert_columns_float(df:pd.DataFrame,exclude_columns:list)->pd.DataFrame:
+def convert_columns_float(df:dd.DataFrame,exclude_columns:list)->dd.DataFrame:
     """
     Converting column to float type except target column
     """
@@ -54,7 +54,7 @@ def convert_columns_float(df:pd.DataFrame,exclude_columns:list)->pd.DataFrame:
             if column not in exclude_columns:
                 #df[column]=df[column].astype('float')
                 #df[column] = df[column].apply(pd.to_numeric, errors='coerce') 
-                df[column] = pd.to_numeric(column, errors='coerce') # ignore errors
+                df[column] = dd.to_numeric(column, errors='coerce') # ignore errors
         return df
     except Exception as e:
         raise AdvertisementException(e, sys)
