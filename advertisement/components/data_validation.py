@@ -1,6 +1,6 @@
 import os,sys 
 import numpy as np
-import pandas as pd
+from dask import dataframe as dd
 from advertisement import utils
 from typing import Optional
 from advertisement.logger import logging
@@ -26,7 +26,7 @@ class DataValidation:
 
     
 
-    def drop_missing_values_columns(self,df:pd.DataFrame,report_key_name:str)->Optional[pd.DataFrame]:
+    def drop_missing_values_columns(self,df:dd.DataFrame,report_key_name:str)->Optional[dd.DataFrame]:
         """
         This function will drop column which contains missing value more than specified threshold
 
@@ -54,7 +54,7 @@ class DataValidation:
             raise AdvertisementException(e, sys)
 
 
-    def is_required_columns_exists(self,base_df:pd.DataFrame,current_df:pd.DataFrame,report_key_name:str)->bool:
+    def is_required_columns_exists(self,base_df:dd.DataFrame,current_df:dd.DataFrame,report_key_name:str)->bool:
         """
         This function checks if required columns exists or not by comparing current df with base df and returns
         output as True and False
@@ -78,7 +78,7 @@ class DataValidation:
         except Exception as e:
             raise AdvertisementException(e, sys)
 
-    def data_drift(self,base_df:pd.DataFrame,current_df:pd.DataFrame,report_key_name:str):
+    def data_drift(self,base_df:dd.DataFrame,current_df:dd.DataFrame,report_key_name:str):
         try:
             drift_report=dict()
 
@@ -110,15 +110,16 @@ class DataValidation:
     def initiate_data_validation(self)->artifact_entity.DataValidationArtifact:
         try:
             logging.info("Reading base dataframe")
-            base_df = pd.read_csv(self.data_validation_config.base_file_path)
+            base_df = dd.read_csv(self.data_validation_config.base_file_path, dtype={'Age': 'float64',
+                        'EstimatedSalary': 'float64'}).head(n=200)
 
             logging.info("Drop null values colums from base df")
             base_df=self.drop_missing_values_columns(df=base_df,report_key_name="missing_values_within_base_dataset")
 
             logging.info("Reading train dataframe")
-            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
+            train_df = dd.read_csv(self.data_ingestion_artifact.train_file_path).head(n=200)
             logging.info("Reading test dataframe")
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+            test_df = dd.read_csv(self.data_ingestion_artifact.test_file_path).head(n=200)
 
             logging.info("Drop null values colums from train df")
             train_df = self.drop_missing_values_columns(df=train_df,report_key_name="missing_values_within_train_dataset")

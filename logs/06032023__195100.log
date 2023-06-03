@@ -1,0 +1,352 @@
+[ 2023-06-03 19:51:08,177 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-06-03 19:51:08,177 ] 30 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-06-03 19:51:08,204 ] 35 root - INFO - Save data in feature store
+[ 2023-06-03 19:51:08,205 ] 37 root - INFO - Create feature store folder if not available
+[ 2023-06-03 19:51:08,206 ] 41 root - INFO - Save df to feature store folder
+[ 2023-06-03 19:51:08,211 ] 46 root - INFO - split dataset into train and test set
+[ 2023-06-03 19:51:08,213 ] 50 root - INFO - create dataset directory folder if not available
+[ 2023-06-03 19:51:08,214 ] 55 root - INFO - Saving train df and test df to dataset folder
+[ 2023-06-03 19:51:08,221 ] 67 root - INFO - Data ingestion artifact: DataIngestionArtifact(feature_store_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__195108\\data_ingestion\\feature_store\\Advertising_data.csv', train_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__195108\\data_ingestion\\dataset\\train.csv', test_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__195108\\data_ingestion\\dataset\\test.csv')
+[ 2023-06-03 19:51:08,222 ] 20 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-06-03 19:51:08,222 ] 112 root - INFO - Reading base dataframe
+[ 2023-06-03 19:51:08,235 ] 116 root - INFO - Drop null values colums from base df
+[ 2023-06-03 19:51:08,236 ] 42 root - INFO - selecting column name which contains null above to 0.2
+[ 2023-06-03 19:51:08,237 ] 45 root - INFO - Columns to drop: []
+[ 2023-06-03 19:51:08,238 ] 119 root - INFO - Reading train dataframe
+[ 2023-06-03 19:51:08,251 ] 121 root - INFO - Reading test dataframe
+[ 2023-06-03 19:51:08,267 ] 124 root - INFO - Drop null values colums from train df
+[ 2023-06-03 19:51:08,268 ] 42 root - INFO - selecting column name which contains null above to 0.2
+[ 2023-06-03 19:51:08,269 ] 45 root - INFO - Columns to drop: []
+[ 2023-06-03 19:51:08,270 ] 126 root - INFO - Drop null values colums from test df
+[ 2023-06-03 19:51:08,271 ] 42 root - INFO - selecting column name which contains null above to 0.2
+[ 2023-06-03 19:51:08,271 ] 45 root - INFO - Columns to drop: []
+[ 2023-06-03 19:51:08,272 ] 129 root - INFO - Is all required columns present in train df
+[ 2023-06-03 19:51:08,272 ] 131 root - INFO - Is all required columns present in test df
+[ 2023-06-03 19:51:08,272 ] 135 root - INFO - As all column are available in train df hence detecting data drift in train dataframe
+[ 2023-06-03 19:51:08,273 ] 92 root - INFO - Checking Data Types of 'User ID': int64, int64 
+[ 2023-06-03 19:51:08,281 ] 99 root - INFO - Checking number of classes in in User ID column
+: (User ID
+15624510    1
+15687491    1
+15745232    1
+15722758    1
+15792102    1
+           ..
+15595324    1
+15756932    1
+15726358    1
+15595228    1
+15708228    1
+Name: count, Length: 200, dtype: int64, User ID
+15655123    1
+15680243    1
+15814816    1
+15793813    1
+15595917    1
+           ..
+15606274    1
+15689751    1
+15598840    1
+15598044    1
+15584545    1
+Name: count, Length: 160, dtype: int64)
+[ 2023-06-03 19:51:08,283 ] 92 root - INFO - Checking Data Types of 'Gender': object, object 
+[ 2023-06-03 19:51:08,286 ] 99 root - INFO - Checking number of classes in in Gender column
+: (Gender
+Male      105
+Female     95
+Name: count, dtype: int64, Gender
+Male      84
+Female    76
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,288 ] 92 root - INFO - Checking Data Types of 'Age': float64, float64 
+[ 2023-06-03 19:51:08,295 ] 99 root - INFO - Checking number of classes in in Age column
+: (Age
+35.0    18
+26.0    16
+27.0    13
+28.0    12
+30.0    11
+31.0    11
+29.0    10
+24.0     9
+32.0     9
+33.0     9
+19.0     7
+20.0     7
+34.0     6
+23.0     6
+25.0     6
+22.0     5
+18.0     5
+37.0     4
+40.0     4
+21.0     4
+47.0     4
+41.0     4
+46.0     3
+39.0     3
+45.0     3
+36.0     3
+48.0     2
+38.0     2
+42.0     2
+49.0     1
+59.0     1
+Name: count, dtype: int64, Age
+35.0    16
+26.0    14
+27.0    12
+28.0    11
+32.0     8
+31.0     8
+33.0     8
+29.0     7
+30.0     7
+24.0     6
+19.0     6
+20.0     5
+25.0     5
+37.0     4
+34.0     4
+22.0     4
+45.0     3
+21.0     3
+47.0     3
+18.0     3
+41.0     3
+40.0     3
+36.0     3
+42.0     2
+46.0     2
+48.0     2
+38.0     2
+23.0     2
+39.0     2
+49.0     1
+59.0     1
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,297 ] 92 root - INFO - Checking Data Types of 'EstimatedSalary': float64, float64 
+[ 2023-06-03 19:51:08,301 ] 99 root - INFO - Checking number of classes in in EstimatedSalary column
+: (EstimatedSalary
+80000.0     7
+59000.0     6
+43000.0     6
+55000.0     5
+72000.0     5
+           ..
+123000.0    1
+73000.0     1
+54000.0     1
+149000.0    1
+36000.0     1
+Name: count, Length: 84, dtype: int64, EstimatedSalary
+43000.0     6
+59000.0     6
+80000.0     6
+89000.0     5
+71000.0     4
+           ..
+123000.0    1
+137000.0    1
+76000.0     1
+108000.0    1
+34000.0     1
+Name: count, Length: 77, dtype: int64)
+[ 2023-06-03 19:51:08,302 ] 92 root - INFO - Checking Data Types of 'Purchased': int64, int64 
+[ 2023-06-03 19:51:08,304 ] 99 root - INFO - Checking number of classes in in Purchased column
+: (Purchased
+0    174
+1     26
+Name: count, dtype: int64, Purchased
+0    139
+1     21
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,305 ] 138 root - INFO - As all column are available in test df hence detecting data drift test dataframe
+[ 2023-06-03 19:51:08,306 ] 92 root - INFO - Checking Data Types of 'User ID': int64, int64 
+[ 2023-06-03 19:51:08,309 ] 99 root - INFO - Checking number of classes in in User ID column
+: (User ID
+15624510    1
+15687491    1
+15745232    1
+15722758    1
+15792102    1
+           ..
+15595324    1
+15756932    1
+15726358    1
+15595228    1
+15708228    1
+Name: count, Length: 200, dtype: int64, User ID
+15709441    1
+15697686    1
+15779862    1
+15699284    1
+15718071    1
+15814004    1
+15798659    1
+15654574    1
+15697020    1
+15725660    1
+15727311    1
+15704583    1
+15649136    1
+15651983    1
+15679651    1
+15672091    1
+15578006    1
+15687491    1
+15697574    1
+15733883    1
+15678168    1
+15577178    1
+15639277    1
+15581198    1
+15762605    1
+15722758    1
+15689237    1
+15595324    1
+15587013    1
+15644296    1
+15679760    1
+15709476    1
+15694288    1
+15578738    1
+15667265    1
+15724402    1
+15594577    1
+15775562    1
+15699247    1
+15746737    1
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,310 ] 92 root - INFO - Checking Data Types of 'Gender': object, object 
+[ 2023-06-03 19:51:08,312 ] 99 root - INFO - Checking number of classes in in Gender column
+: (Gender
+Male      105
+Female     95
+Name: count, dtype: int64, Gender
+Male      21
+Female    19
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,313 ] 92 root - INFO - Checking Data Types of 'Age': float64, float64 
+[ 2023-06-03 19:51:08,318 ] 99 root - INFO - Checking number of classes in in Age column
+: (Age
+35.0    18
+26.0    16
+27.0    13
+28.0    12
+30.0    11
+31.0    11
+29.0    10
+24.0     9
+32.0     9
+33.0     9
+19.0     7
+20.0     7
+34.0     6
+23.0     6
+25.0     6
+22.0     5
+18.0     5
+37.0     4
+40.0     4
+21.0     4
+47.0     4
+41.0     4
+46.0     3
+39.0     3
+45.0     3
+36.0     3
+48.0     2
+38.0     2
+42.0     2
+49.0     1
+59.0     1
+Name: count, dtype: int64, Age
+23.0    4
+30.0    4
+31.0    3
+29.0    3
+24.0    3
+35.0    2
+20.0    2
+18.0    2
+34.0    2
+26.0    2
+21.0    1
+32.0    1
+40.0    1
+28.0    1
+25.0    1
+22.0    1
+41.0    1
+47.0    1
+27.0    1
+39.0    1
+46.0    1
+19.0    1
+33.0    1
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,319 ] 92 root - INFO - Checking Data Types of 'EstimatedSalary': float64, float64 
+[ 2023-06-03 19:51:08,325 ] 99 root - INFO - Checking number of classes in in EstimatedSalary column
+: (EstimatedSalary
+80000.0     7
+59000.0     6
+43000.0     6
+55000.0     5
+72000.0     5
+           ..
+123000.0    1
+73000.0     1
+54000.0     1
+149000.0    1
+36000.0     1
+Name: count, Length: 84, dtype: int64, EstimatedSalary
+20000.0     2
+63000.0     2
+61000.0     2
+82000.0     2
+87000.0     2
+28000.0     2
+25000.0     1
+58000.0     1
+62000.0     1
+44000.0     1
+65000.0     1
+55000.0     1
+112000.0    1
+15000.0     1
+21000.0     1
+107000.0    1
+69000.0     1
+51000.0     1
+76000.0     1
+49000.0     1
+80000.0     1
+48000.0     1
+22000.0     1
+86000.0     1
+117000.0    1
+19000.0     1
+72000.0     1
+88000.0     1
+68000.0     1
+57000.0     1
+17000.0     1
+30000.0     1
+74000.0     1
+52000.0     1
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,326 ] 92 root - INFO - Checking Data Types of 'Purchased': int64, int64 
+[ 2023-06-03 19:51:08,328 ] 99 root - INFO - Checking number of classes in in Purchased column
+: (Purchased
+0    174
+1     26
+Name: count, dtype: int64, Purchased
+0    35
+1     5
+Name: count, dtype: int64)
+[ 2023-06-03 19:51:08,329 ] 141 root - INFO - create dataset directory folder if not available for validated train file and test file
+[ 2023-06-03 19:51:08,330 ] 146 root - INFO - Saving validated train df and test df to dataset folder
+[ 2023-06-03 19:51:08,335 ] 152 root - INFO - Writing report in yaml file
+[ 2023-06-03 19:51:08,340 ] 158 root - INFO - Data validation artifact: DataValidationArtifact(report_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__195108\\data_validation\\report.yaml', train_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__195108\\data_validation\\dataset\\train.csv', test_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__195108\\data_validation\\dataset\\test.csv')

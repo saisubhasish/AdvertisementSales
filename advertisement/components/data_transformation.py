@@ -2,16 +2,13 @@ import os,sys
 import numpy as np
 import pandas as pd
 
-from sklearn.impute import KNNImputer
-from sklearn.preprocessing import LabelEncoder
 from sklearn.pipeline import Pipeline
 
 from typing import Optional
-from imblearn.combine import SMOTETomek    # To generate some data for minority class 
 
 from advertisement import utils
 from advertisement.entity import artifact_entity,config_entity
-from advertisement.exception import ThyroidException
+from advertisement.exception import AdvertisementException
 from advertisement.logger import logging
 from advertisement.config import TARGET_COLUMN
 
@@ -26,7 +23,7 @@ class DataTransformation:
             self.data_transformation_config=data_transformation_config
             self.data_validation_artifact=data_validation_artifact
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def feature_encoding(self,df:pd.DataFrame)->Optional[pd.DataFrame]:
         """
@@ -45,7 +42,7 @@ class DataTransformation:
             return df
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def handling_null_value_and_outliers(self,df:pd.DataFrame)->Optional[pd.DataFrame]:
         """
@@ -65,7 +62,7 @@ class DataTransformation:
             return df
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     @classmethod
     def get_knn_imputer_object(cls)->Pipeline:     # Attributes of this class will be same across all the object 
@@ -77,7 +74,7 @@ class DataTransformation:
             return knn_pipeline
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
     
 
     def initiate_data_transformation(self,) -> artifact_entity.DataTransformationArtifact:
@@ -168,4 +165,4 @@ class DataTransformation:
             return data_transformation_artifact
             
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)

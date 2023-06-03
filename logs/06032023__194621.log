@@ -1,0 +1,11 @@
+[ 2023-06-03 19:46:26,218 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-06-03 19:46:26,218 ] 30 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-06-03 19:46:26,301 ] 35 root - INFO - Save data in feature store
+[ 2023-06-03 19:46:26,301 ] 37 root - INFO - Create feature store folder if not available
+[ 2023-06-03 19:46:26,302 ] 41 root - INFO - Save df to feature store folder
+[ 2023-06-03 19:46:26,310 ] 46 root - INFO - split dataset into train and test set
+[ 2023-06-03 19:46:26,313 ] 50 root - INFO - create dataset directory folder if not available
+[ 2023-06-03 19:46:26,314 ] 55 root - INFO - Saving train df and test df to dataset folder
+[ 2023-06-03 19:46:26,320 ] 67 root - INFO - Data ingestion artifact: DataIngestionArtifact(feature_store_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__194626\\data_ingestion\\feature_store\\Advertising_data.csv', train_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__194626\\data_ingestion\\dataset\\train.csv', test_file_path='D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\artifact\\06032023__194626\\data_ingestion\\dataset\\test.csv')
+[ 2023-06-03 19:46:26,320 ] 20 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-06-03 19:46:26,320 ] 112 root - INFO - Reading base dataframe
