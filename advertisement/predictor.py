@@ -39,6 +39,7 @@ class ModelResolver:
         except Exception as e:
             raise AdvertisementException(e, sys)
 
+
     def get_latest_model_path(self):
         """
         This function raise Exception if there is no model present in saved models dir

@@ -26,8 +26,7 @@ class ModelPusher:
             # Load object 
             logging.info("Loading knn_imputer, model and target encoder")
             model = load_object(file_path=self.model_trainer_artifact.model_path)
-            knn_imputer = load_object(file_path=self.data_transformation_artifact.knn_imputer_object_path)
-            target_encoder = load_object(file_path=self.data_transformation_artifact.target_encoder_path)
+            transformer = load_object(file_path=self.data_transformation_artifact.transformer_object_path)
 
             # Model pusher dir
             logging.info("Saving model into model pusher directory")
