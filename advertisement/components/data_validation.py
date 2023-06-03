@@ -53,24 +53,6 @@ class DataValidation:
         except Exception as e:
             raise AdvertisementException(e, sys)
 
-    def drop_unnecessary_columns(self, df:pd.DataFrame, report_key_name:str)->Optional[pd.DataFrame]:
-        """
-        This function will drop unnecessary columns from dataframe
-        
-        df : Accepts a pandas dataframe
-        =========================================================================================
-        returns Pandas Dataframe by dropping 'TSH measured', 'T3 measured', 'TT4 measured', 'T4U measured', 'FTI measured', 'TBG measured', 'referral source', 'query on thyroxine'
-        """
-        try:
-            drop_columns = ['TSH measured', 'T3 measured', 'TT4 measured', 'T4U measured', 'FTI measured', 'TBG measured', 'referral source', 'query on thyroxine']
-            logging.info(f"UnnecessaColumns dropped: {drop_columns}")
-            self.validation_error[report_key_name] = drop_columns
-            drop_columns = df[drop_columns]
-            df.drop(columns=drop_columns, axis=1, inplace=True)
-            return df
-            
-        except Exception as e:
-            raise AdvertisementException(e, sys)
 
     def is_required_columns_exists(self,base_df:pd.DataFrame,current_df:pd.DataFrame,report_key_name:str)->bool:
         """
@@ -129,9 +111,7 @@ class DataValidation:
         try:
             logging.info("Reading base dataframe")
             base_df = pd.read_csv(self.data_validation_config.base_file_path)
-            base_df.replace({"?":np.NAN},inplace=True)
-            logging.info("Replace ? value in base df")
-            #base_df has ? as null
+
             logging.info("Drop null values colums from base df")
             base_df=self.drop_missing_values_columns(df=base_df,report_key_name="missing_values_within_base_dataset")
 
@@ -144,13 +124,6 @@ class DataValidation:
             train_df = self.drop_missing_values_columns(df=train_df,report_key_name="missing_values_within_train_dataset")
             logging.info("Drop null values colums from test df")
             test_df = self.drop_missing_values_columns(df=test_df,report_key_name="missing_values_within_test_dataset")
-
-            logging.info("Drop unnecessary columns from base df")
-            base_df = self.drop_unnecessary_columns(df=base_df, report_key_name="dropping_unnecessary_columns_base_df")
-            logging.info("Drop unnecessary columns from train df")
-            train_df = self.drop_unnecessary_columns(df=train_df, report_key_name="dropping_unnecessary_columns_train_df")
-            logging.info("Drop unnecessary columns from test df")
-            test_df = self.drop_unnecessary_columns(df=test_df, report_key_name="dropping_unnecessary_columns_test_df")
 
             logging.info("Is all required columns present in train df")
             train_df_columns_status = self.is_required_columns_exists(base_df=base_df, current_df=train_df,report_key_name="missing_columns_within_train_dataset")

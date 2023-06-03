@@ -30,7 +30,7 @@ class DataIngestion:
             logging.info(f"Exporting collection data as pandas dataframe")
             # Exporting collection data as pandas dataframe
             df:dd.DataFrame  = dd.read_csv(DATA_FILE_PATH, dtype={'Age': 'float64',
-       'EstimatedSalary': 'float64'}).head(n=200)  # Act like pandas dataframe
+                            'EstimatedSalary': 'float64'}).head(n=200)  # Act like pandas dataframe
 
             logging.info("Save data in feature store")
             # Save data in feature store

@@ -16,11 +16,12 @@ def get_collection_as_dataframe(database_name:str,collection_name:str)->dd.DataF
     database_name: database name
     collection_name: collection name
     =========================================================
-    return Pandas dataframe of a collection
+    return Dask dataframe of a collection
     """
     try:    
         logging.info(f"Reading data from database: {database_name} and collection: {collection_name}")
-        df = dd.DataFrame(list(mongo_client[database_name][collection_name].find()))
+        df = dd.DataFrame(list(mongo_client[database_name][collection_name].find()), dtype={'Age': 'float64',
+       'EstimatedSalary': 'float64'}).head(n=200)
         logging.info(f"Found columns: {df.columns}")
         if "_id" in df.columns:
             logging.info(f"Dropping column: _id ")
