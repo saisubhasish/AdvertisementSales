@@ -85,6 +85,7 @@ class ModelEvaluation:
             logging.info(f"Accuracy using previous trained model: {previous_model_score}")
 
             # Accuracy using current trained model
+            logging.info(f"Accuracy using current trained model")
             exclude_columns = [TARGET_COLUMN]
             input_feature_name = list(current_transformer.feature_names_in_)
             input_feature_test_df= test_df[input_feature_name]
