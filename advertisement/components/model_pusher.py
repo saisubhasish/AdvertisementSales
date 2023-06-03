@@ -1,10 +1,10 @@
 import os, sys
-from thyroid.logger import logging
-from thyroid.exception import ThyroidException
-from thyroid.predictor import ModelResolver
-from thyroid.entity.config_entity import ModelPusherConfig
-from thyroid.utils import save_object, load_object
-from thyroid.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ModelPusherArtifact
+from advertisement.logger import logging
+from advertisement.exception import AdvertisementException
+from advertisement.predictor import ModelResolver
+from advertisement.entity.config_entity import ModelPusherConfig
+from advertisement.utils import save_object, load_object
+from advertisement.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ModelPusherArtifact
 
 class ModelPusher:
 
@@ -19,7 +19,7 @@ class ModelPusher:
             self.model_resolver = ModelResolver(model_registry=self.model_pusher_config.saved_model_dir)
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def initiate_model_pusher(self)->ModelPusherArtifact:
         try:
@@ -54,4 +54,4 @@ class ModelPusher:
             return model_pusher_artifact
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)

@@ -83,7 +83,7 @@ class ModelTrainer:
             # Prepare artifact
             logging.info("Prepare the artifact")
             model_trainer_artifact  = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path, 
-            f1_train_score=r2_train_score, f1_test_score=r2_test_score)
+            r2_train_score=r2_train_score, r2_test_score=r2_test_score)
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
             
