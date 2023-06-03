@@ -12,6 +12,7 @@ from advertisement.entity import artifact_entity,config_entity
 from advertisement.exception import AdvertisementException
 from advertisement.logger import logging
 from advertisement.config import TARGET_COLUMN
+from advertisement.config import FEATURE_COLUMN
 
 
 
@@ -48,13 +49,13 @@ class DataTransformation:
             
             # Selecting input feature for train and test dataframe
             logging.info("Selecting input feature for train and test dataframe")
-            input_feature_train_df=train_df.drop(TARGET_COLUMN,axis=1)
-            input_feature_test_df=test_df.drop(TARGET_COLUMN,axis=1)
+            input_feature_train_df=train_df[[FEATURE_COLUMN]]
+            input_feature_test_df=test_df[[FEATURE_COLUMN]]
 
             # Selecting target feature for train and test dataframe
             logging.info("Selecting target feature for train and test dataframe")
-            target_feature_train_df = train_df[[TARGET_COLUMN]]
-            target_feature_test_df = test_df[[TARGET_COLUMN]]
+            target_feature_train_df = train_df[TARGET_COLUMN]
+            target_feature_test_df = test_df[TARGET_COLUMN]
 
             # Imputing null values with KNNImputer
             transformation_pipeline = DataTransformation.get_transformer_object()

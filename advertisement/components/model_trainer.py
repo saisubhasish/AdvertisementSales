@@ -1,15 +1,15 @@
 import os,sys 
 
 from typing import Optional
-from xgboost import XGBClassifier
+from sklearn.linear_model import LinearRegression
 
-from sklearn.metrics import f1_score
+from sklearn.metrics import r2_score
 from sklearn.model_selection import GridSearchCV
 
-from thyroid import utils
-from thyroid.logger import logging
-from thyroid.exception import ThyroidException
-from thyroid.entity import artifact_entity,config_entity
+from advertisement import utils
+from advertisement.logger import logging
+from advertisement.exception import AdvertisementException
+from advertisement.entity import artifact_entity,config_entity
 
 
 class ModelTrainer:
@@ -22,44 +22,19 @@ class ModelTrainer:
             self.data_transformation_artifact=data_transformation_artifact
 
         except Exception as e:
-            raise ThyroidException(e, sys)
-
-
-    def fine_tune(self,x,y):
-        """
-        Hyper parameter tuning using GridSearchCV
-        This function accepts x and y 
-        -------------------------------------------
-        Returns best paramenters for XGBClassifier
-        """
-        try:
-            # Defining parameters
-            parameters = {'max_depth': range (2, 10, 1),
-                            'eta': [0.1, 0.2, 0.3],
-                            'n_estimators': [100, 200, 300],
-                            'learning_rate': [0.01, 0.03, 0.05]} 
-
-            grid_search = GridSearchCV(estimator= XGBClassifier(), param_grid=parameters, n_jobs=-1, verbose=3, cv=3)
-            
-            grid_search.fit(x, y)
-            BestParams = grid_search.best_params_
-            
-            return BestParams
-
-        except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def train_model(self,x,y):
         """
         Model training
         """
         try:
-            xgb_clf =  XGBClassifier(eta= 0.1, learning_rate= 0.05, max_depth= 4, n_estimators= 300)
-            xgb_clf.fit(x,y)
-            return xgb_clf
+            lr =  LinearRegression()
+            lr.fit(x,y)
+            return lr
 
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 
     def initiate_model_trainer(self,)->artifact_entity.ModelTrainerArtifact:
         """
@@ -117,5 +92,5 @@ class ModelTrainer:
             return model_trainer_artifact
             
         except Exception as e:
-            raise ThyroidException(e, sys)
+            raise AdvertisementException(e, sys)
 

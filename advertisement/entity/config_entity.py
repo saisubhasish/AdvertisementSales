@@ -3,7 +3,7 @@ from datetime import datetime
 from advertisement.logger import logging
 from advertisement.exception import AdvertisementException
 
-FILE_NAME = 'Advertising_data.csv'
+FILE_NAME = 'advertising.csv'
 TRAIN_FILE_NAME = 'train.csv'
 TEST_FILE_NAME = 'test.csv'
 TRANSFORMER_OBJECT_FILE_NAME = "transformer.pkl"
