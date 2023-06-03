@@ -20,4 +20,3 @@ apache-airflow
 flask
 Flask-Cors
 dask
--e .

@@ -9,11 +9,11 @@ from sklearn.pipeline import Pipeline
 from typing import Optional
 from imblearn.combine import SMOTETomek    # To generate some data for minority class 
 
-from thyroid import utils
-from thyroid.entity import artifact_entity,config_entity
-from thyroid.exception import ThyroidException
-from thyroid.logger import logging
-from thyroid.config import TARGET_COLUMN
+from advertisement import utils
+from advertisement.entity import artifact_entity,config_entity
+from advertisement.exception import ThyroidException
+from advertisement.logger import logging
+from advertisement.config import TARGET_COLUMN
 
 
 

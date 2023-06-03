@@ -2,10 +2,10 @@ import os,sys
 import pandas as pd 
 import numpy as np
 
-from thyroid import utils
-from thyroid.logger import logging
-from thyroid.exception import ThyroidException
-from thyroid.entity import config_entity, artifact_entity
+from advertisement import utils
+from advertisement.logger import logging
+from advertisement.exception import ThyroidException
+from advertisement.entity import config_entity, artifact_entity
 
 from sklearn.model_selection import train_test_split
 
