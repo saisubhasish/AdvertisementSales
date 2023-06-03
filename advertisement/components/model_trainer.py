@@ -49,10 +49,6 @@ class ModelTrainer:
             x_train,y_train = train_arr[:,:-1],train_arr[:,-1]
             x_test,y_test = test_arr[:,:-1],test_arr[:,-1]
 
-            logging.info('Hyperparameter tuning using GridSearchCV')
-            Best_Params = self.fine_tune(x=x_train,y=y_train)
-            print(f"The best parameters for XGBoostClassifier are : {Best_Params}")
-            logging.info(f"The best parameters for XGBoostClassifier are : {Best_Params}")
 
             logging.info("Train the model")
             model = self.train_model(x=x_train,y=y_train)
@@ -60,21 +56,21 @@ class ModelTrainer:
             # Prediction and accuracy using training data
             logging.info("Calculating f1 train score")
             yhat_train = model.predict(x_train)
-            f1_train_score= f1_score(y_true=y_train, y_pred=yhat_train)
+            r2_train_score= r2_score(y_true=y_train, y_pred=yhat_train)
 
             # Prediction and acuracy using test data
             logging.info("Calculating f1 test score")
             yhat_test = model.predict(x_test)
-            f1_test_score= f1_score(y_true=y_test, y_pred=yhat_test)
+            r2_test_score= r2_score(y_true=y_test, y_pred=yhat_test)
             
-            logging.info(f"train score:{f1_train_score} and tests score {f1_test_score}")
+            logging.info(f"train score:{r2_train_score} and tests score {r2_test_score}")
             logging.info("Checking if our model is a good model or not")
-            if f1_test_score<self.model_trainer_config.expected_score:
+            if r2_test_score<self.model_trainer_config.expected_score:
                 raise Exception(f"Model is not good as it is not able to give \
-                expected accuracy: {self.model_trainer_config.expected_score}: model actual score: {f1_test_score}")
+                expected accuracy: {self.model_trainer_config.expected_score}: model actual score: {r2_test_score}")
 
             logging.info("Checking if our model is overfiiting or not")
-            diff = abs(f1_train_score-f1_test_score)   # Checking the difference by removing -ve
+            diff = abs(r2_train_score-r2_test_score)   # Checking the difference by removing -ve
 
             # Check for overfitting or underfiiting on threshold
             if diff>self.model_trainer_config.overfitting_threshold:
@@ -87,7 +83,7 @@ class ModelTrainer:
             # Prepare artifact
             logging.info("Prepare the artifact")
             model_trainer_artifact  = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path, 
-            f1_train_score=f1_train_score, f1_test_score=f1_test_score)
+            f1_train_score=r2_train_score, f1_test_score=r2_test_score)
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
             
