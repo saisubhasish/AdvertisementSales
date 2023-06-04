@@ -1,0 +1,14 @@
+[ 2023-06-04 10:05:04,738 ] 15 root - INFO - Creating model resolver object
+[ 2023-06-04 10:05:05,915 ] 224 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[ 2023-06-04 10:05:05,916 ] 224 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2023-06-04 10:05:05,919 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 10:47:30,277 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 10:47:45,563 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 10:47:59,507 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 11:12:41,935 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 11:13:06,388 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 11:13:58,148 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 11:14:15,630 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 11:15:00,636 ] 224 werkzeug - INFO -  * Restarting with stat
+[ 2023-06-04 11:15:15,583 ] 224 werkzeug - INFO -  * Restarting with stat

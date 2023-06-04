@@ -30,9 +30,9 @@ class DataValidation:
         """
         This function will drop column which contains missing value more than specified threshold
 
-        df : Accepts a pandas dataframe
+        df : Accepts a dask dataframe
         =========================================================================================
-        returns Pandas Dataframe if atleast a single column is available after missing columns drop else None
+        returns dask Dataframe if atleast a single column is available after missing columns drop else None
         """
         try:
             

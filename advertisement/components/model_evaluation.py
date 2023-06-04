@@ -1,5 +1,5 @@
 import os, sys
-import pandas as pd
+from dask import dataframe as dd
 import numpy as np
 
 from sklearn.metrics import r2_score
@@ -66,7 +66,7 @@ class ModelEvaluation:
             current_model  = load_object(file_path=self.model_trainer_artifact.model_path)
             
             # Reading test file
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+            test_df = dd.read_csv(self.data_ingestion_artifact.test_file_path).head(n=200)
             # output label
             target_df = test_df[TARGET_COLUMN]
             y_true =target_df

@@ -1,3 +1,0 @@
-[ 2023-06-03 19:12:21,756 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-[ 2023-06-03 19:12:21,757 ] 30 root - INFO - Exporting collection data as pandas dataframe
-[ 2023-06-03 19:12:21,757 ] 22 root - INFO - Reading data from database: advertisingSales and collection: advertising

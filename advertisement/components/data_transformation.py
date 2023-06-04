@@ -1,6 +1,6 @@
 import os,sys 
 import numpy as np
-import pandas as pd
+from dask import dataframe as dd
 
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -44,8 +44,8 @@ class DataTransformation:
         try:
             # Reading training and testing file
             logging.info("Reading training and testing file")
-            train_df = pd.read_csv(self.data_validation_artifact.train_file_path)
-            test_df = pd.read_csv(self.data_validation_artifact.test_file_path)
+            train_df = dd.read_csv(self.data_validation_artifact.train_file_path).head(n=200)
+            test_df = dd.read_csv(self.data_validation_artifact.test_file_path).head(n=200)
             
             # Selecting input feature for train and test dataframe
             logging.info("Selecting input feature for train and test dataframe")

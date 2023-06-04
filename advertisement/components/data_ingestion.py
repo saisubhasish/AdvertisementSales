@@ -27,8 +27,8 @@ class DataIngestion:
         and returns output: feature store file, train file and test file
         """
         try:
-            logging.info(f"Exporting collection data as pandas dataframe")
-            # Exporting collection data as pandas dataframe
+            logging.info(f"Exporting collection data as dask dataframe")
+            # Exporting collection data as dask dataframe
             df:dd.DataFrame  = dd.read_csv(DATA_FILE_PATH, dtype={'Age': 'float64',
                             'EstimatedSalary': 'float64'}).head(n=200)  # Act like pandas dataframe
 

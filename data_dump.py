@@ -1,6 +1,6 @@
 import json
 import pymongo
-import pandas as pd
+from dask import dataframe as dd
 from advertisement.config import mongo_client
 
 DATA_FILE_PATH="D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\advertising.csv"
@@ -8,7 +8,7 @@ DATABASE_NAME="advertisementSales"
 COLLECTION_NAME="advertisement"
 
 if __name__=="__main__":
-    df = pd.read_csv(DATA_FILE_PATH)
+    df = dd.read_csv(DATA_FILE_PATH).head(n=200)
     print(f"Rows and columns: {df.shape}")
 
     #Convert dataframe to json so that we can dump these record in mongo db
