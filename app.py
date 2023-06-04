@@ -2,7 +2,7 @@ import sys
 from flask import Flask, request, jsonify, url_for, render_template
 from flask_cors import CORS, cross_origin
 import numpy as np
-import pandas as pd
+from dask import dataframe as dd
 from advertisement.predictor import ModelResolver
 from advertisement.logger import logging
 from advertisement.utils import load_object
@@ -17,7 +17,7 @@ model_resolver = ModelResolver(model_registry="saved_models")   # Location where
 
 
 # Load the model
-target_encoder = load_object(file_path=model_resolver.get_latest_target_encoder_path())
+transformer = load_object(file_path=model_resolver.get_latest_transformer_path())
 model = load_object(file_path=model_resolver.get_latest_model_path())
 
 @app.route('/')
@@ -37,11 +37,10 @@ def predict_api():
         final_data = np.array(data).reshape(1,-1)
         logging.info(f"The input for the real time prediction: {final_data}")
         prediction = model.predict(final_data)
-        cat_prediction = target_encoder.inverse_transform(prediction)
-        print(cat_prediction)
-        logging.info(f"The decoded output for the real time prediction: {cat_prediction}")
+        print(prediction)
+        logging.info(f"The predicted output on the real time data: {prediction}")
         
-        return render_template('home.html', output_text="The prediction of Disease is: {}.".format(cat_prediction))
+        return render_template('home.html', output_text="The prediction of Sales on advertisement is: {}.".format(prediction))
     
     except Exception as e:
         raise AdvertisementException(error_message=e, error_detail=sys)
