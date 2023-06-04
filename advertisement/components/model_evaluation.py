@@ -80,7 +80,7 @@ class ModelEvaluation:
             y_pred = model.predict(input_arr)
 
             # Label decoding with 5 values to get actual string
-            print(f"Prediction using previous model: {transformer.inverse_transform(y_pred[:5])}")
+            print(f"Prediction using previous model: {(y_pred[:5])}")
             previous_model_score = r2_score(y_true=y_true, y_pred=y_pred)
             logging.info(f"Accuracy using previous trained model: {previous_model_score}")
 
@@ -94,7 +94,7 @@ class ModelEvaluation:
             y_pred= current_model.predict(input_arr)
             y_true= target_df
             # Label decoding with 5 values to get actual string 
-            print(f"Prediction using trained model: {transformer.inverse_transform(y_pred[:5])}")
+            print(f"Prediction using trained model: {(y_pred[:5])}")
             current_model_score = r2_score(y_true=y_true, y_pred=y_pred)
             logging.info(f"Accuracy using current trained model: {current_model_score}")
             if current_model_score<=previous_model_score:
