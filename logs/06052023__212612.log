@@ -1,0 +1,8 @@
+[ 2023-06-05 21:26:13,213 ] 15 root - INFO - Creating model resolver object
+[ 2023-06-05 21:26:14,095 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-06-05 21:26:14,117 ] 224 werkzeug - INFO -  * Debugger PIN: 751-181-508
+[ 2023-06-05 21:34:00,212 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 21:34:00] "GET / HTTP/1.1" 200 -
+[ 2023-06-05 21:34:00,493 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 21:34:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2023-06-05 21:34:13,684 ] 38 root - INFO - The input for the real time prediction: [[15.]]
+[ 2023-06-05 21:34:13,693 ] 41 root - INFO - The predicted output on the real time data: [85.36782766]
+[ 2023-06-05 21:34:13,695 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 21:34:13] "POST /predict_api HTTP/1.1" 200 -

@@ -1,0 +1,4 @@
+[ 2023-06-04 13:56:18,068 ] 15 root - INFO - Creating model resolver object
+[ 2023-06-04 13:56:19,313 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-06-04 13:56:19,319 ] 224 werkzeug - INFO -  * Debugger PIN: 769-220-118
+[ 2023-06-04 14:33:58,660 ] 224 werkzeug - INFO -  * Detected change in 'd:\\fsds-ineuron\\10.projects-ds\\advertisementsales\\app.py', reloading

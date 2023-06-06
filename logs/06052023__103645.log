@@ -1,0 +1,44 @@
+[ 2023-06-05 10:36:53,249 ] 481 uvicorn.error - ERROR - Error loading ASGI app. Attribute "app" not found in module "main".
+[ 2023-06-05 10:36:53,252 ] 1692 asyncio - ERROR - Cancelling an overlapped future failed
+future: <_OverlappedFuture pending overlapped=<pending, 0x20e38e4d280> cb=[BaseProactorEventLoop._loop_self_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\site-packages\uvicorn\importer.py", line 31, in import_from_string
+    instance = getattr(instance, attr_str)
+AttributeError: module 'main' has no attribute 'app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\site-packages\uvicorn\config.py", line 479, in load
+    self.loaded_app = import_from_string(self.app)
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\site-packages\uvicorn\importer.py", line 34, in import_from_string
+    raise ImportFromStringError(
+uvicorn.importer.ImportFromStringError: Attribute "app" not found in module "main".
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\runners.py", line 43, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\base_events.py", line 595, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\base_events.py", line 563, in run_forever
+    self._run_once()
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\base_events.py", line 1844, in _run_once
+    handle._run()
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\events.py", line 81, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\site-packages\uvicorn\server.py", line 67, in serve
+    config.load()
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\site-packages\uvicorn\config.py", line 482, in load
+    sys.exit(1)
+SystemExit: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Sai\anaconda3\envs\advertisement\lib\asyncio\windows_events.py", line 66, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid

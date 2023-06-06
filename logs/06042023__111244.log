@@ -1,4 +1,0 @@
-[ 2023-06-04 11:12:46,227 ] 15 root - INFO - Creating model resolver object
-[ 2023-06-04 11:12:47,494 ] 224 werkzeug - WARNING -  * Debugger is active!
-[ 2023-06-04 11:12:47,501 ] 224 werkzeug - INFO -  * Debugger PIN: 769-220-118
-[ 2023-06-04 11:13:05,412 ] 224 werkzeug - INFO -  * Detected change in 'D:\\FSDS-iNeuron\\10.Projects-DS\\AdvertisementSales\\advertisement\\components\\data_validation.py', reloading

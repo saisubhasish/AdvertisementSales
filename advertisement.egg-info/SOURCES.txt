@@ -22,5 +22,4 @@ advertisement/entity/__init__.py
 advertisement/entity/artifact_entity.py
 advertisement/entity/config_entity.py
 advertisement/pipeline/__init__.py
-advertisement/pipeline/batch_prediction.py
 advertisement/pipeline/training_pipeline.py

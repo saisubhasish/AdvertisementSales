@@ -1,0 +1,7 @@
+[ 2023-06-05 22:34:47,592 ] 15 root - INFO - Creating model resolver object
+[ 2023-06-05 22:34:48,747 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-06-05 22:34:48,754 ] 224 werkzeug - INFO -  * Debugger PIN: 751-181-508
+[ 2023-06-05 22:34:48,803 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 22:34:48] "GET / HTTP/1.1" 200 -
+[ 2023-06-05 22:35:10,220 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 22:35:10] "GET / HTTP/1.1" 200 -
+[ 2023-06-05 22:35:25,362 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 22:35:25] "GET / HTTP/1.1" 200 -
+[ 2023-06-05 22:36:33,803 ] 224 werkzeug - INFO - 127.0.0.1 - - [05/Jun/2023 22:36:33] "GET / HTTP/1.1" 200 -
